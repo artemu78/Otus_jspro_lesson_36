@@ -1,8 +1,7 @@
 import React from 'react';
 import { Bell, Search, User, LogIn, LogOut, Menu } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
-import { useSettings } from '../context/SettingsContext';
-import clsx from 'clsx';
+import { useAuth } from '@/context/AuthContext';
+import { useSettings } from '@/context/SettingsContext';
 
 export const Header = () => {
   const { isAuthenticated, login, logout } = useAuth();

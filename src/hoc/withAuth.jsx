@@ -2,6 +2,7 @@ import { useAuth } from '../context/AuthContext';
 import { ShieldAlert } from 'lucide-react';
 
 export const withAuth = (WrappedComponent) => {
+  
   const WithAuthComponent = (props) => {
     const { isAuthenticated } = useAuth();
 
@@ -14,7 +15,7 @@ export const withAuth = (WrappedComponent) => {
       );
     }
 
-    return <WrappedComponent {...props} />;
+    return <WrappedComponent {...props}/>;
   };
   
   // Set display name for debugging

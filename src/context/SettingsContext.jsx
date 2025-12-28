@@ -12,9 +12,8 @@ export const useSettings = () => {
 
 export const SettingsProvider = ({ children }) => {
   const [theme, setTheme] = useState('light');
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState('ru');
 
-  // Handle dark mode class on html/body
   useEffect(() => {
     const root = window.document.documentElement;
     if (theme === 'dark') {

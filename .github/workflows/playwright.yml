@@ -10,6 +10,9 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.57.0-jammy # Use your exact version!
+      options: --user 1001 # Recommended to avoid permission issues
 
     steps:
       - uses: actions/checkout@v4

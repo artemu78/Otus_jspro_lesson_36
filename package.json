@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test:e2e": "playwright test",
-    "test:update-linux": "docker run --rm --ipc=host -v $(pwd):/work/ -v /work/node_modules -w /work mcr.microsoft.com/playwright:v1.57.0-jammy /bin/bash -c \"npm ci && npx playwright test --update-snapshots\""
+    "test:update-linux": "docker run --platform linux/amd64 --rm --ipc=host -v $(pwd):/work/ -v /work/node_modules -w /work mcr.microsoft.com/playwright:v1.57.0-jammy /bin/bash -c \"npm ci && npx playwright test --update-snapshots\""
   },
   "dependencies": {
     "clsx": "^2.1.1",

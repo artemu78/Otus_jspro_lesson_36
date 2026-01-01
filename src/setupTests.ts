@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom';
+import { vi } from 'vitest';
 
-vi.mock('@/context/AuthContext', (importOriginal) => {
+vi.mock('@/context/AuthContext', (importOriginal: () => object) => {
     const originalModule = importOriginal();
     return {
         ...originalModule,
@@ -12,7 +13,7 @@ vi.mock('@/context/AuthContext', (importOriginal) => {
     };
 });
 
-vi.mock('@/context/SettingsContext', (importOriginal) => {
+vi.mock('@/context/SettingsContext', (importOriginal: () => object) => {
     const originalModule = importOriginal();
     return {
         ...originalModule,

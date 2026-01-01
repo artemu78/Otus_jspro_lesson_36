@@ -1,6 +1,12 @@
 import { createContext, useContext, useState } from 'react';
 
-const AuthContext = createContext();
+interface IContext {
+  isAuthenticated: boolean;
+  login: () => void;
+  logout: () => void;
+}
+
+const AuthContext = createContext<IContext | null>(null);
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
@@ -10,7 +16,7 @@ export const useAuth = () => {
   return context;
 };
 
-export const AuthProvider = ({ children }) => {
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Default false as per requirements (simulation)
 
   const login = () => setIsAuthenticated(true);

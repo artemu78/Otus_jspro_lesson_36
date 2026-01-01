@@ -6,8 +6,22 @@ const MOCK_DATA = [
     { id: 3, topic: 'Sustainable Tech', growth: 89, history: [40, 38, 45, 55, 65, 78, 89] },
 ];
 
-export const useTrendData = () => {
-    const [trends, setTrends] = useState([]);
+interface ITrend {
+    id: number;
+    topic: string;
+    growth: number;
+    history: number[];
+}
+
+interface IUseTrendData {
+    trends: ITrend[];
+    loading: boolean;
+    error: Error | null;
+    refetch: () => void;
+}
+
+export const useTrendData = (): IUseTrendData => {
+    const [trends, setTrends] = useState<ITrend[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 

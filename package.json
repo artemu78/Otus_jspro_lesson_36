@@ -12,15 +12,17 @@
     "test:update-linux": "docker run --platform linux/amd64 --rm --ipc=host -v $(pwd):/work/ -v /work/node_modules -w /work mcr.microsoft.com/playwright:v1.57.0-jammy /bin/bash -c \"npm ci && npx playwright test --update-snapshots\""
   },
   "dependencies": {
+    "@playwright/test": "^1.49.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.562.0",
     "playwright": "^1.49.1",
-    "@playwright/test": "^1.49.1",
     "react-dom": "^19.2.0",
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.1",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
@@ -29,8 +31,11 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
+    "jsdom": "^27.4.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.19",
-    "vite": "^7.2.4"
+    "vite": "^7.2.4",
+    "vitest": "^4.0.16",
+    "typescript": "^5.9.3"
   }
 }

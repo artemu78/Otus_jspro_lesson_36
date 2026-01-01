@@ -1,9 +1,8 @@
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '@/context/AuthContext';
 import { ShieldAlert } from 'lucide-react';
 
-export const withAuth = (WrappedComponent) => {
-  
-  const WithAuthComponent = (props) => {
+export function withAuth<P extends object>(WrappedComponent: React.ComponentType<P>) {
+  const WithAuthComponent: React.FC<P> = (props) => {
     const { isAuthenticated } = useAuth();
 
     if (!isAuthenticated) {
@@ -15,12 +14,12 @@ export const withAuth = (WrappedComponent) => {
       );
     }
 
-    return <WrappedComponent {...props}/>;
+    return <WrappedComponent {...props} />;
   };
-  
+
   // Set display name for debugging
   const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
   WithAuthComponent.displayName = `WithAuth(${displayName})`;
 
   return WithAuthComponent;
-};
+}

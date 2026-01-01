@@ -1,12 +1,12 @@
-export const Sparkline = ({ data, color = "#10b981" }) => {
+export const Sparkline: React.FC<{ data: number[]; color?: string }> = ({ data, color = "#10b981" }) => {
   if (!data || data.length < 2) return null;
-  
+
   const min = Math.min(...data);
   const max = Math.max(...data);
   const range = max - min || 1;
   const height = 40;
   const width = 100;
-  
+
   const points = data.map((val, i) => {
     const x = (i / (data.length - 1)) * width;
     const y = height - ((val - min) / range) * height;

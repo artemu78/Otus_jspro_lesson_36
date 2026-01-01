@@ -1,6 +1,13 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 
-const SettingsContext = createContext();
+interface IContext {
+  theme: 'light' | 'dark';
+  toggleTheme: () => void;
+  language: 'en' | 'ru';
+  toggleLanguage: () => void;
+}
+
+const SettingsContext = createContext<IContext | null>(null);
 
 export const useSettings = () => {
   const context = useContext(SettingsContext);
@@ -10,9 +17,9 @@ export const useSettings = () => {
   return context;
 };
 
-export const SettingsProvider = ({ children }) => {
-  const [theme, setTheme] = useState('light');
-  const [language, setLanguage] = useState('ru');
+export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [language, setLanguage] = useState<'en' | 'ru'>('ru');
 
   useEffect(() => {
     const root = window.document.documentElement;

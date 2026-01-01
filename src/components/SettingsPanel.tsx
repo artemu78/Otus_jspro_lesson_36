@@ -1,8 +1,7 @@
-import React from "react";
-import { useSettings } from "../context/SettingsContext";
+import { useSettings } from "@/context/SettingsContext";
 import { Moon, Sun, Globe } from "lucide-react";
 
-const SettingsPanel = () => {
+const SettingsPanel: React.FC = () => {
   const { theme, toggleTheme, language, toggleLanguage } = useSettings();
   return (
     <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden transition-colors">

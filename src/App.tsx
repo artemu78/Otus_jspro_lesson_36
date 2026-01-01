@@ -4,8 +4,8 @@ import { Header } from "./components/Header";
 import { Sidebar } from "./components/Sidebar";
 import { TrendCard, LoadingTrendCard } from "./components/TrendCard";
 import SettingsPanel from "./components/SettingsPanel";
-import { withAuth } from "./hoc/withAuth.jsx";
-import { withErrorBoundary } from "./hoc/withErrorBoundary.jsx";
+import { withAuth } from "./hoc/withAuth";
+import { withErrorBoundary } from "./hoc/withErrorBoundary";
 import { useTrendData } from "./hooks/useTrendData";
 import { RefreshCw } from "lucide-react";
 import clsx from "clsx";
@@ -17,7 +17,7 @@ const SafeSettingsWithAuth = withErrorBoundary(ProtectedSettings);
 const SafeTrendCard = withErrorBoundary(TrendCard);
 const SafeTrendCardWithAuth = withAuth(SafeTrendCard);
 
-const DashboardContent = () => {
+const DashboardContent: React.FC = () => {
   const { trends, loading, refetch } = useTrendData();
   const { language } = useSettings();
 
@@ -59,15 +59,15 @@ const DashboardContent = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {loading
               ? // Loading Skeletons
-                [1, 2, 3].map((i) => <LoadingTrendCard key={i} />)
+              [1, 2, 3].map((i) => <LoadingTrendCard key={i} />)
               : trends.map((trend) => (
-                  <SafeTrendCard
-                    key={trend.id}
-                    topic={trend.topic}
-                    growth={trend.growth}
-                    history={trend.history}
-                  />
-                ))}
+                <SafeTrendCard
+                  key={trend.id}
+                  topic={trend.topic}
+                  growth={trend.growth}
+                  history={trend.history}
+                />
+              ))}
           </div>
         </section>
 
